@@ -48,8 +48,7 @@ app.post('/loan', async (req, res) => {
     }
 
     await sheet.addRow(addNew);
-
-    res.send('success!')
+    res.send('success!');
 })
 
 app.listen(process.env.PORT || 3000, process.env.IP, () => {
