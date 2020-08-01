@@ -52,11 +52,14 @@ app.post('/loan', async (req, res) => {
     const sheet = doc.sheetsByIndex[0];
 
     const addNew = {
-        name: req.body.name,
+        fullname: req.body.fullname,
+        loan_amount: req.body.loan_amount,
+        income: req.body.income,
         phone: req.body.phone,
-        salary: req.body.salary,
-        pincode: req.body.pincode,
-        loan_type: req.body.loan_type
+        email: req.body.email,
+        profession: req.body.profession,
+        city: req.body.city,
+        state: req.body.state
     }
 
     await sheet.addRow(addNew);
