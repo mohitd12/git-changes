@@ -11,6 +11,18 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
+    res.redirect('/loan');  
+})
+
+app.get('/thankspage', (req, res) => {
+    res.render('thanks-page')
+})
+
+app.get('/insurance', (req, res) => {
+    res.render('loan-form');
+})
+
+app.get('/loan', (req, res) => {
     res.render('loan-form');
 })
 
@@ -48,7 +60,7 @@ app.post('/loan', async (req, res) => {
     }
 
     await sheet.addRow(addNew);
-    res.send('success!');
+    res.redirect('/thankspage');
 })
 
 app.listen(process.env.PORT || 3000, process.env.IP, () => {
