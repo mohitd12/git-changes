@@ -66,6 +66,6 @@ app.post('/loan', async (req, res) => {
     res.redirect('/thankspage');
 })
 
-app.listen(3000, () => {
+app.listen(process.env.IP || 3000, process.env.IP, () => {
     console.log('server on...')
 });
