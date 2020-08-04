@@ -1,7 +1,4 @@
 const express = require('express');
-const https = require('https');
-const http = require('http');
-const fs = require('fs');
 const bodyParser = require('body-parser');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const creds = require('./creds.json');
@@ -69,4 +66,6 @@ app.post('/loan', async (req, res) => {
     res.redirect('/thankspage');
 })
 
-app.listen(3000);
+app.listen(3000, () => {
+    console.log('server on...')
+});
