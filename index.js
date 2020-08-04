@@ -69,10 +69,4 @@ app.post('/loan', async (req, res) => {
     res.redirect('/thankspage');
 })
 
-const options = {
-    key: fs.readFileSync('./ssl/key.pem'),
-    cert: fs.readFileSync('./ssl/cert.pem')
-};
-
-https.createServer(options, app).listen(443);
-http.createServer(options, app).listen(3000);
+app.listen(3000);
