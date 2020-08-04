@@ -1,4 +1,7 @@
 const express = require('express');
+const https = require('https');
+const http = require('http');
+const fs = require('fs');
 const bodyParser = require('body-parser');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const creds = require('./creds.json');
@@ -66,7 +69,10 @@ app.post('/loan', async (req, res) => {
     res.redirect('/thankspage');
 })
 
-app.listen(process.env.PORT || 3000, process.env.IP, () => {
-    console.log('server is listening...')
-})
+const options = {
+    key: fs.readFileSync('./ssl/key.pem'),
+    cert: fs.readFileSync('./ssl/cert.pem')
+};
 
+https.createServer(options, app).listen(443);
+http.createServer(options, app).listen(3000);
