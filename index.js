@@ -34,11 +34,7 @@ async function accessSp() {
     })
 
     await doc.loadInfo();
-    console.log(doc.title);
-
     const sheet = doc.sheetsByIndex[0];
-    
-    console.log(sheet.title);
 }
 
 app.post('/loan', async (req, res) => {
@@ -66,6 +62,8 @@ app.post('/loan', async (req, res) => {
     res.redirect('/thankspage');
 })
 
-app.listen(process.env.IP || 3000, process.env.IP, () => {
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
     console.log('server on...')
 });
